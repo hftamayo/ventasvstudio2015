@@ -1,0 +1,25 @@
+﻿@* @model IEnumerable<WebAppDemo01.models.Productos> *@
+@model WebAppDemo01.viewmodels.ListaProductosViewModel
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Listado General de Productos</title>
+</head>
+<body>
+    @* foreach(var productos in Model) *@
+    <h1>@Model.CategoriasProductos</h1>
+    @foreach(var productos in Model.Productos)
+    {
+        <div>
+            <h2>@productos.CodigoProducto</h2>
+            <h3>@productos.NombreProducto</h3>
+            <h4>@productos.PreCostoProducto.ToString("c")</h4>
+
+        </div>
+
+    }
+</body>
+</html>
