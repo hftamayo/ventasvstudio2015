@@ -13,7 +13,6 @@ namespace WebAppDemo01.models
         }//fin del constructor
 
         public DbSet<CatProductos> CategoriasProductos { get; set; }
-
         public DbSet<Productos> Productos { get; set; }
 
     }

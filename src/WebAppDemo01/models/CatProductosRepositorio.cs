@@ -19,6 +19,5 @@ namespace WebAppDemo01.models
 
         //extension de los metodos disponibles en la clase interface
         public IEnumerable<CatProductos> CategoriasProductos => _appDbContext.CategoriasProductos;
-
     }
 }
