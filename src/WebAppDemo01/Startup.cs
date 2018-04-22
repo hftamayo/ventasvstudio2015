@@ -37,8 +37,9 @@ namespace WebAppDemo01
             //registrar mis clases repositorios y mock ya que todo es un servicio
             //actualizado por implementacion EFCore
             //services.AddTransient<ICatProductosRepositorio, MockCatProductosRepositorio>();
-            services.AddTransient<ICatProductosRepositorio, CatProductosRepositorio>();
             services.AddTransient<IProductosRepositorio, MockProductosRepositorio>();
+            services.AddTransient<ICatProductosRepositorio, CatProductosRepositorio>();
+            //services.AddTransient<IProductosRepositorio, ProductosRepositorio>();
 
             //agrega soporte MVC a mi proyecto
             services.AddMvc();

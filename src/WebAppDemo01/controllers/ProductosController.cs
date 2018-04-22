@@ -30,7 +30,7 @@ namespace WebAppDemo01.controllers
             ListaProductosViewModel listaproductosViewModel = new ListaProductosViewModel();
             listaproductosViewModel.Productos = _productosRepositorio.Productos;
             //pasando intencionalmente un valor a la variable de la clase
-            listaproductosViewModel.CategoriasProductos = "Tabletas de Entrenamiento";
+            //listaproductosViewModel.CategoriasProductos = "Tabletas de Entrenamiento";
 
             //return View(_productosRepositorio.Productos);
             return View(listaproductosViewModel);
