@@ -19,7 +19,7 @@ namespace WebAppDemo01.models
         {
             get
             {
-                return _appDbContext.Productos.Include(c => c.CodigoCategoria);
+                return _appDbContext.Productos.Include(c => c.CatProductos);
             }
         }
 
@@ -27,7 +27,7 @@ namespace WebAppDemo01.models
         {
             get
             {
-                return _appDbContext.Productos.Include(c => c.CodigoCategoria).Where(p => p.ProductoEnOferta);
+                return _appDbContext.Productos.Include(c => c.CatProductos).Where(p => p.ProductoEnOferta);
             }
         }
 

@@ -1,13 +1,18 @@
 ﻿@model ListaProductosViewModel
-@ViewBag.CategoriaActual
-<h1>@Model.CategoriasProductos</h1>
+
+
 @foreach (var productos in Model.Productos)
 {
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="caption">
-            <h3 class="pull-right">@productos.PreCostoProducto.ToString("c")</h3>
-            <h3><a>@productos.CodigoProducto</a></h3>
-            <h3><a>@productos.NombreProducto</a></h3>
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+            <img class="card-img-top" src="@productos.ImagenPreviaURL" alt="">
+            <div class="card-body">
+                <h4 class="card-title">@productos.NombreProducto</h4>
+                <p class="card-text">@productos.PreCostoProducto.ToString("c")</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn btn-primary">Detalles</a>
+            </div>
         </div>
     </div>
 }
