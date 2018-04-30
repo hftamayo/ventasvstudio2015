@@ -14,6 +14,7 @@ namespace WebAppDemo01.models
 
         public DbSet<CatProductos> CategoriasProductos { get; set; }
         public DbSet<Productos> Productos { get; set; }
+        public DbSet<CarroCompras> CarroCompras { get; set; }
 
     }
 }

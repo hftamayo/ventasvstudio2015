@@ -1,0 +1,13 @@
+﻿@model Productos
+<div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+        <img class="card-img-top" src="@Model.ImagenPreviaURL" alt="">
+        <div class="card-body">
+            <h4 class="card-title">@Model.NombreProducto</h4>
+            <p class="card-text">@Model.PreCostoProducto.ToString("c")</p>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary">Detalles</a>
+        </div>
+    </div>
+</div>

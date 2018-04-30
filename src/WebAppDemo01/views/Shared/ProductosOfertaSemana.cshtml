@@ -1,0 +1,14 @@
+﻿@model Productos
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="@Model.ImagenPreviaURL" alt="" />
+        <div class="caption">
+            <h3>@Model.PreVentaProducto.ToString("c")</h3>
+            <h3>
+                <a asp-controller="Productos" asp-action="DetallesProductos" asp-route-id="@Model.CodigoProducto"></a>
+            </h3>
+            <p>@Model.DescripCortaProducto</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿@model HomeViewModel
+
+@await Html.PartialAsync("CarruselHome")
+<h2>Ofertas de la Semana</h2>
+<h4>Seleccion de los mejores productos y precios para nuestros clientes</h4>
+<div class="row">
+    @foreach (var productos in Model.ProductoOfertaSemana)
+    {
+        @Html.Partial("ProductosOfertaSemana", productos)
+
+    }
+</div>
