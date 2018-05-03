@@ -24,17 +24,40 @@ namespace WebAppDemo01.controllers
         }//fin del constructor
 
         //metodo para devolver la vista con datos inyectados
-        public ViewResult ListaProductos()
+        public ViewResult ListaProductos(string categoriasProductos)
         {
-            //objetos para mostrar las categorias de los productos
-            ListaProductosViewModel listaproductosViewModel = new ListaProductosViewModel();
-            listaproductosViewModel.Productos = _productosRepositorio.Productos;
-            //pasando intencionalmente un valor a la variable de la clase
-            //listaproductosViewModel.CategoriasProductos = "Tabletas de Entrenamiento";
+            //bug: si la categoria no se digite justo como esta 
+            //almacenada genera un NullReferenceException
+            IEnumerable<Productos> productos;
+            string categoriaActual = string.Empty;
+            if (string.IsNullOrEmpty(categoriasProductos))
+            {
+                productos = _productosRepositorio.Productos.OrderBy(p => p.CodigoProducto);
+                categoriaActual = "Todos los Productos";
+            }
+            else
+            {
+                productos = _productosRepositorio.Productos.Where(p => p.CatProductos.NombreCatProducto == categoriasProductos)
+                    .OrderBy(p => p.CodigoProducto);
+                categoriaActual = _catproductosRepositorio.CategoriasProductos.FirstOrDefault(c => c.NombreCatProducto == categoriasProductos).NombreCatProducto;
+            }
 
-            //return View(_productosRepositorio.Productos);
-            return View(listaproductosViewModel);
+            return View(new ListaProductosViewModel
+            {
+                Productos = productos,
+                CategoriasProductos = categoriaActual
+            });
         }//fin del metodo ListaProductos
+
+        public IActionResult Detalles(int codigo)
+        {
+            var producto = _productosRepositorio.GetProductosPorCodigo(codigo);
+            if(producto == null)
+            {
+                return NotFound();
+            }
+            return View(producto);
+        }
 
     }
 }
