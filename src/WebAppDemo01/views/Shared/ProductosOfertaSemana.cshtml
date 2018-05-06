@@ -1,14 +1,19 @@
 ﻿@model Productos
-
-<div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-        <img src="@Model.ImagenPreviaURL" alt="" />
-        <div class="caption">
-            <h3>@Model.PreVentaProducto.ToString("c")</h3>
-            <h3>
-                <a asp-controller="Productos" asp-action="DetallesProductos" asp-route-id="@Model.CodigoProducto"></a>
-            </h3>
-            <p>@Model.DescripCortaProducto</p>
+<div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+        <img class="card-img-top" src="@Model.ImagenPreviaURL" alt="">
+        <div class="card-body">
+            <h4 class="card-title">@Model.NombreProducto</h4>
+            <p class="card-text">@Model.PreCostoProducto.ToString("c")</p>
+        </div>
+        <div class="card-footer">
+            <a asp-controller="Productos"
+               asp-action="Detalles"
+               asp-route-id="@Model.CodigoProducto">Detalles</a>
+            <p class="button">
+                <a class="btn btn-primary" asp-controller="CarroCompras" asp-action="AgregarItemCarroCompras"
+                   asp-route-CodigoProducto="@Model.CodigoProducto">Comprar</a>
+            </p>
         </div>
     </div>
 </div>

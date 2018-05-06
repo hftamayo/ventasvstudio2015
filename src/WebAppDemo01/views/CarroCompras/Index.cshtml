@@ -1,0 +1,34 @@
+﻿@model CarroComprasViewModel
+
+<h2>Items Seleccionados para Compras</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Cantidad</th>
+            <th>Producto</th>
+            <th class="text-right">Precio</th>
+            <th class="text-right">SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var linea in Model.CarroCompras.CarroComprasItems)
+        {
+            <tr>
+                <td class="text-center">@linea.cantidadProductoSeleccionado</td>
+                <td class="text-center">@linea.Productos.NombreProducto</td>
+                <td class="text-right">@linea.Productos.PreVentaProducto.ToString("c")</td>
+                <td class="text-right">
+                    @((linea.cantidadProductoSeleccionado * linea.Productos.PreVentaProducto).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.CarroComprasTotal.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>

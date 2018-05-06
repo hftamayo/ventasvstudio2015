@@ -18,26 +18,20 @@
         <div class="container">
             <img class="img-fluid" alt="" src="~/Imagenes/logo.jpg" width="50" height="50" /> &nbsp;
             <a class="navbar-brand" href="#">Tamayo y Asociados</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Navegacion</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Home">
-                            Inicio
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Productos/ListaProductos">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
+                        <a asp-controller="Home" asp-action="Index">Inicio</a>
+                    </li>&nbsp;&nbsp;
+                    @await Component.InvokeAsync("CategoriasMenu")
+                    &nbsp;&nbsp;<li class="nav-item"><a asp-controller="Contactos" asp-action="Index">Contactanos</a></li>
+                    @await Component.InvokeAsync("CarroComprasContenido")
                 </ul>
             </div>
         </div>

@@ -1,0 +1,17 @@
+﻿@model Productos
+
+<div class="thumbnail">
+    <img alt="@Model.NombreProducto" src="@Model.ImagenURL" />
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.PreVentaProducto</h3>
+        <h3>
+            <a href="#">@Model.NombreProducto</a>
+        </h3>
+        <h4>@Model.DescripCortaProducto</h4>
+        <p>@Model.DescripLargaProducto</p>
+        <p class="button">
+            <a class="btn btn-primary" asp-controller="CarroCompras" asp-action="AgregarItemCarroCompras"
+               asp-route-codigoProducto="@Model.CodigoProducto">Comprar</a>
+        </p>
+    </div>
+</div>

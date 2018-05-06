@@ -40,9 +40,16 @@ namespace WebAppDemo01
             //services.AddTransient<IProductosRepositorio, MockProductosRepositorio>();
             services.AddTransient<ICatProductosRepositorio, CatProductosRepositorio>();
             services.AddTransient<IProductosRepositorio, ProductosRepositorio>();
-
+            //registros para que la clase CarroCompras pueda trabajar con el DBContext
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //clase que permite crear un objeto que se asociara con cada usuario que haga
+            //uso de la clase CarroCompras. Es como una instancia
+            services.AddScoped<CarroCompras>(sp => CarroCompras.GetCarroCompras(sp));
             //agrega soporte MVC a mi proyecto
             services.AddMvc();
+            //habilitacion de trabajar con sesiones
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,13 +58,15 @@ namespace WebAppDemo01
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            //habilitacion del middleware para sesiones que CarroCompras utilizara
+            app.UseSession();
             // configuracion de routing app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "filtrocatproductos",
                     template: "Productos/{action}/{categoriasProductos?}",
-                    defaults: new { Controller = "Productos", Action = "ListaProductos" });
+                    defaults: new { Controller = "Productos", action = "ListaProductos" });
 
             routes.MapRoute(
                     name: "default",
